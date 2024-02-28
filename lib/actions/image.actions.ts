@@ -7,11 +7,12 @@ import User from '../database/models/user.model'
 import { connectToDatabase } from '../database/mongoose'
 import { handleError } from '../utils'
 
-const populateUser = (query: any) => query.populate({
-  path: 'author',
-  model: User,
-  select: '_id firstName lastName clerkId'
-})
+const populateUser = (query: any) =>
+  query.populate({
+    path: 'author',
+    model: User,
+    select: '_id firstName lastName clerkId'
+  })
 
 //ADD IMAGE
 
@@ -41,12 +42,12 @@ export async function addImage({ image, userId, path }: AddImageParams) {
 // UPDATE IMAGE
 export async function updateImage({ image, userId, path }: UpdateImageParams) {
   try {
-    await connectToDatabase();
+    await connectToDatabase()
 
-    const imageToUpdate = await Image.findById(image._id);
+    const imageToUpdate = await Image.findById(image._id)
 
     if (!imageToUpdate || imageToUpdate.author.toHexString() !== userId) {
-      throw new Error("Unauthorized or image not found");
+      throw new Error('Unauthorized or image not found')
     }
 
     const updatedImage = await Image.findByIdAndUpdate(
@@ -55,9 +56,9 @@ export async function updateImage({ image, userId, path }: UpdateImageParams) {
       { new: true }
     )
 
-    revalidatePath(path);
+    revalidatePath(path)
 
-    return JSON.parse(JSON.stringify(updatedImage));
+    return JSON.parse(JSON.stringify(updatedImage))
   } catch (error) {
     handleError(error)
   }
@@ -66,12 +67,12 @@ export async function updateImage({ image, userId, path }: UpdateImageParams) {
 // DELETE IMAGE
 export async function deleteImage(imageId: string) {
   try {
-    await connectToDatabase();
+    await connectToDatabase()
 
-    await Image.findByIdAndDelete(imageId);
+    await Image.findByIdAndDelete(imageId)
   } catch (error) {
     handleError(error)
-  } finally{
+  } finally {
     redirect('/')
   }
 }
@@ -79,13 +80,31 @@ export async function deleteImage(imageId: string) {
 // GET IMAGE
 export async function getImageById(imageId: string) {
   try {
-    await connectToDatabase();
+    await connectToDatabase()
 
-    const image = await populateUser(Image.findById(imageId));
+    const image = await populateUser(Image.findById(imageId))
 
-    if(!image) throw new Error("Image not found");
+    if (!image) throw new Error('Image not found')
 
-    return JSON.parse(JSON.stringify(image));
+    return JSON.parse(JSON.stringify(image))
+  } catch (error) {
+    handleError(error)
+  }
+}
+
+// GET IMAGES
+export async function getAllImages({
+  limit = 9,
+  page = 1,
+  searchQuery = ''
+}: {
+  limit?: number
+  page: number
+  searchQuery?: string
+}) {
+  try {
+    await connectToDatabase()
+      
   } catch (error) {
     handleError(error)
   }
