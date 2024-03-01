@@ -1,22 +1,22 @@
-import { auth } from "@clerk/nextjs";
-import { redirect } from "next/navigation";
+import { auth } from '@clerk/nextjs'
+import { redirect } from 'next/navigation'
 
-import Header from "@/components/shared/Header";
-import TransformationForm from "@/components/shared/TransformationForm";
-import { transformationTypes } from "@/constants";
-import { getUserById } from "@/lib/actions/user.actions";
-import { getImageById } from "@/lib/actions/image.actions";
+import Header from '@/components/shared/Header'
+import TransformationForm from '@/components/shared/TransformationForm'
+import { transformationTypes } from '@/constants'
+import { getUserById } from '@/lib/actions/user.actions'
+import { getImageById } from '@/lib/actions/image.actions'
 
 const Page = async ({ params: { id } }: SearchParamProps) => {
-  const { userId } = auth();
+  const { userId } = auth()
 
-  if (!userId) redirect("/sign-in");
+  if (!userId) redirect('/sign-in')
 
-  const user = await getUserById(userId);
-  const image = await getImageById(id);
+  const user = await getUserById(userId)
+  const image = await getImageById(id)
 
   const transformation =
-    transformationTypes[image.transformationType as TransformationTypeKey];
+    transformationTypes[image.transformationType as TransformationTypeKey]
 
   return (
     <>
@@ -33,7 +33,7 @@ const Page = async ({ params: { id } }: SearchParamProps) => {
         />
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page
