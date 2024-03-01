@@ -91,9 +91,9 @@ STRIPE_WEBHOOK_SECRET=
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
 ```
 
-Substitua os valores fictícios pelos seus credenciais reais respectivos. Você pode obter esses credenciais se inscrevendo no [Clerk](https://clerk.com/), [MongoDB](https://www.mongodb.com/), [Cloudinary](https://cloudinary.com/) and [Stripe](https://stripe.com)
+Substitua os valores fictícios pelas suas credenciais reais respectivos. Você pode obter esses credenciais se inscrevendo no [Clerk](https://clerk.com/), [MongoDB](https://www.mongodb.com/), [Cloudinary](https://cloudinary.com/) and [Stripe](https://stripe.com)
 
-**Running the Project**
+**Rodando o Projeto**
 
 ```bash
 npm run dev
