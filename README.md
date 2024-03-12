@@ -1,9 +1,5 @@
 <h3 align="center">Plataforma SaaS de IA para Imagens</h3>
 
-<div align="center">
-  Construa este projeto passo a passo com nosso tutorial detalhado no <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a> no YouTube. Junte-se à família JSM!
-</div>
-
 ## 📋 Índice
 
 1. [Introdução](#introdução)
@@ -50,7 +46,7 @@ Siga estes passos para configurar o projeto localmente em sua máquina.
 2. **Clonando o Repositório:**
 
    ```bash
-   git clone https://github.com/adrianhajdin/imaginify.git
+   git clone https://github.com/vasconcelos-gabriel/imaginify.git
    cd imaginify
 
    ```
